@@ -58,8 +58,7 @@ const deleteFolder = async (bucketName, folderKey, interval) => {
 
         // 폴더에 객체가 있었던 경우, log.txt에 폴더 이름과 객체 경로를 기록합니다.
         if (folderDeleted) {
-            const logPath = path.join(__dirname, 'logs', `log${interval}.txt`);
-            fs.appendFileSync(logPath, logContent);
+            fs.appendFileSync(`log${interval}.txt`, logContent);
         }
 
         console.log(`폴더 ${folderKey} 삭제 완료.`);
