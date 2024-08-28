@@ -21,4 +21,6 @@ const runQuery = async () => {
     }
 };
 
-runQuery();
+//runQuery();
+
+module.exports = { client }
