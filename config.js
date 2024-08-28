@@ -17,7 +17,30 @@ const pgConfig = {
     password: process.env.PG_DB_PASSWORD,
     database: process.env.PG_DB_DATABASE
 }
+
+const s3Config = {
+    accessKey: process.env.S3_ACCESS_KEY,
+    secretKey: process.env.S3_SECRET_KEY,
+    region: process.env.S3_REGION
+}
+const s3TestConfig = {
+    accessKey: process.env.S3_TEST_ACCESS_KEY,
+    secretKey: process.env.S3_TEST_SECRET_KEY,
+    region: process.env.S3_TEST_REGION
+}
+
+const bucketConfig = {
+    bucketName: process.env.S3_ATTATCHMENT_BUCKET_NAME
+}
+const bucketTestConfig = {
+    bucketName: process.env.S3_TEST_DELETE_BUCKEY_NAME
+}
+
 module.exports = {
     msConfig,
-    pgConfig
+    pgConfig,
+    s3Config,
+    s3TestConfig,
+    bucketConfig,
+    bucketTestConfig,
 };

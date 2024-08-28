@@ -1,5 +1,5 @@
 const { Client } = require('pg');
-const { pgConfig } = require('../config'); // config.js에서 dbConfig를 불러옵니다.
+const { pgConfig } = require('../config');
 
 const client = new Client(pgConfig);
 

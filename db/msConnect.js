@@ -1,5 +1,5 @@
 const sql = require('mssql');
-const { msConfig } = require('../config'); // config.js에서 dbConfig를 불러옵니다.
+const { msConfig } = require('../config');
 
 const queryDatabase = async () => {
     try {
