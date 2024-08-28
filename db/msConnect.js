@@ -1,7 +1,6 @@
-require('dotenv').config(); // .env 파일을 로드합니다.
 const sql = require('mssql');
+const { msConfig } = require('../config'); // config.js에서 dbConfig를 불러옵니다.
 
-const { msConfig } = require('./config'); // config.js에서 dbConfig를 불러옵니다.
 const queryDatabase = async () => {
     try {
         await sql.connect(msConfig);
