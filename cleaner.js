@@ -1,8 +1,7 @@
-const { bucketConfig } = require("./config");
+const { bucketTestConfig, bucketConfig } = require("./config");
 const { client } = require("./db/pgConnect");
 const { deleteFolder } = require("./s3/deleteS3");
 
-// 쿼리 실행 및 폴더 삭제 처리
 const deleteQuery = async (interval) => {
     const pageSize = 100; // 한 번에 가져올 데이터 수
     let offset = 0; // 데이터의 시작 위치
@@ -41,20 +40,27 @@ const deleteQuery = async (interval) => {
         }
     }
 };
+const intervals = [];
 
-// 모든 interval에 대해 병렬로 deleteQuery 호출
-const intervals = [30, 60, 90, 120, 150, 180];
 
-const runAll = async () => {
-    try {
-        await Promise.all(intervals.map(interval => deleteQuery(interval)));
-    } catch (err) {
-        console.error('전체 작업 실행 중 오류 발생:', err.stack);
-    } finally {
-        // 연결 종료
-        await client.end();
+// const runAll = async () => {
+//     try {
+//         await Promise.all(intervals.map(interval => deleteQuery(interval)));
+//     } catch (err) {
+//         console.error('전체 작업 실행 중 오류 발생:', err.stack);
+//     } finally {
+//         // 연결 종료
+//         await client.end();
+//     }
+// };
+
+const run = async () => {
+    // 930부터 1500까지 30씩 증가시키며 배열에 추가-> 4년전 데이터까지 전부 삭제 
+    for (let i = 930; i <= 1500; i += 30) {
+        await deleteQuery(i)
     }
-};
+}
+//run()
 
 // 함수 호출
-runAll();
+//runAll();
